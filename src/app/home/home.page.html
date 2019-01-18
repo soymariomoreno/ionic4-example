@@ -1,17 +1,45 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Ionic Blank
+      Mis gastos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h1>Hola Ionic</h1>
+<ion-content>
+  <!--Button fixed -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <ion-button (click)="click()">Click</ion-button>
+  <!-- Items card -->
+  <ion-card routerLink="/list-details">
+      <ion-card-header>
+        <ion-card-title>
+          <h3>Lista
+            <span style="position: absolute; right: 0px; color: #2f8ce2">$1,500.00</span>
+          </h3>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          15 de enero del 2019
+          <span style="position: absolute; right: 15px; color: #4d9f32">Terminado</span>
+      </ion-card-content>
+  </ion-card>
 
-  <ion-button color="tertiary" routerLink="/perfil">Perfil</ion-button>
-
-  <ion-button (click)="goUrl()">Click 2</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h3>Lista
+          <span style="position: absolute; right: 0px; color: #2f8ce2">$15.00</span>
+        </h3>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        16 de enero del 2019
+        <span style="position: absolute; right: 15px; color: #e73636">En proceso</span>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

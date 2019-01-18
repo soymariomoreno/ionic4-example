@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ModalListComponent } from '../modal-list/modal-list.component';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(
+    private modal : ModalController,
     private alert : AlertController,
     private router: Router
     ){
@@ -31,5 +33,14 @@ export class HomePage {
 
   goUrl() : void {
     this.router.navigateByUrl('/perfil');
+  }
+
+  async openModal() {
+    const modal = await this.modal.create({
+      component : ModalListComponent,
+      cssClass : 'modal'
+    });
+
+    return await modal.present();
   }
 }
