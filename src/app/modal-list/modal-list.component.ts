@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-modal-list',
@@ -13,6 +14,7 @@ export class ModalListComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
+    private dbService : DatabaseService,
     private modal: ModalController) { }
 
   ngOnInit() {
@@ -23,7 +25,12 @@ export class ModalListComponent implements OnInit {
 
   crearList(){
     console.log(this.listFormGroup.value);
-    this.modal.dismiss();
+    this.dbService.createList(this.listFormGroup.get('name').value).then(response => {
+      console.log(response);
+      this.modal.dismiss();
+    }).catch(e => {
+      console.log(e);
+    })
   }
 
 }

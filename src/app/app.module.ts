@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModalListComponent } from './modal-list/modal-list.component';
 
 
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 import { DatabaseService } from './database.service';
 
 @NgModule({
@@ -35,7 +35,6 @@ import { DatabaseService } from './database.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLite,
-    SQLiteObject,
     DatabaseService
   ],
   bootstrap: [AppComponent]

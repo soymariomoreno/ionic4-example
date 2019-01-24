@@ -15,21 +15,21 @@
   </ion-fab>
 
   <!-- Items card -->
-  <ion-card routerLink="/list-details">
+  <ion-card *ngFor="let item of lists" routerLink="/list-details">
       <ion-card-header>
         <ion-card-title>
-          <h3>Lista
-            <span style="position: absolute; right: 0px; color: #2f8ce2">$1,500.00</span>
+          <h3>{{item.name}}
+            <span style="position: absolute; right: 0px; color: #2f8ce2">${{item?.total}}</span>
           </h3>
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
-          15 de enero del 2019
-          <span style="position: absolute; right: 15px; color: #4d9f32">Terminado</span>
+          {{item.date}}
+          <span [style]="cssStatus">{{getStatus(item.status)}}</span>
       </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
       <ion-card-title>
         <h3>Lista
@@ -41,5 +41,5 @@
         16 de enero del 2019
         <span style="position: absolute; right: 15px; color: #e73636">En proceso</span>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

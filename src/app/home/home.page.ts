@@ -1,20 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ModalListComponent } from '../modal-list/modal-list.component';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+
+  lists : any;
+
+  txtStatus:string;
+  cssStatus:string;
 
   constructor(
+    private dbService : DatabaseService,
     private modal : ModalController,
     private alert : AlertController,
     private router: Router
     ){
+  }
+
+  ngOnInit(){
+    this.dbService.getAllList().then(response => {
+      console.log(response)
+      this.lists = response;
+    }).catch(e => {
+      console.log(e)
+    });
+  }
+
+
+  getStatus(id) {
+    //return id == 0 ? 'En proceso' : 'Terminado';
+    if(id == 0){
+      this.txtStatus = 'En proceso';
+      this.cssStatus = 'position: absolute; right: 15px; color: #4d9f32';
+    }else{
+      this.txtStatus = 'Terminado';
+      this.cssStatus = 'position: absolute; right: 15px; color: #e73636';
+    }
   }
 
   async click() {

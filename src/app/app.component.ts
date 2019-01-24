@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 import { DatabaseService } from './database.service';
 
 @Component({
@@ -31,10 +31,11 @@ export class AppComponent {
   }
 
   createDB(){
+    console.log('create');
     this.sqlite.create({
       name: 'data.db',
       location: 'default' 
-    }).then((db: SQLiteObject) => {
+    }).then((db) => {
       console.log('Executed sql');
       this.dbService.setDatabase(db);
       return this.dbService.createTables();
