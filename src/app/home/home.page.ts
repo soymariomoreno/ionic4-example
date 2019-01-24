@@ -38,10 +38,10 @@ export class HomePage implements OnInit {
     //return id == 0 ? 'En proceso' : 'Terminado';
     if(id == 0){
       this.txtStatus = 'En proceso';
-      this.cssStatus = 'position: absolute; right: 15px; color: #4d9f32';
+      this.cssStatus = 'enproceso';
     }else{
       this.txtStatus = 'Terminado';
-      this.cssStatus = 'position: absolute; right: 15px; color: #e73636';
+      this.cssStatus = 'terminado';
     }
   }
 

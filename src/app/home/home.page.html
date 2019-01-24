@@ -25,7 +25,7 @@
       </ion-card-header>
       <ion-card-content>
           {{item.date}}
-          <span [style]="cssStatus">{{getStatus(item.status)}}</span>
+          <span *ngIf="getStatus(item.status)" [ngClass]="cssStatus">{{txtStatus}}</span>
       </ion-card-content>
   </ion-card>
 
