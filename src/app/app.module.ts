@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModalListComponent } from './modal-list/modal-list.component';
 
 
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { DatabaseService } from './database.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +28,15 @@ import { ModalListComponent } from './modal-list/modal-list.component';
     IonicModule.forRoot(), 
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SQLite,
+    SQLiteObject,
+    DatabaseService
   ],
   bootstrap: [AppComponent]
 })
